@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户登录</title>
+</head>
+
+<body>
+  <form action="" method="post">
+    账号：<input name="username" type="text" />
+    密码：<input name="password" type="password" />
+    <button type="submit">登录</button>
+  </form>
+
+  <script>
+    const form = document.querySelector("form");
+    form.onsubmit = (event) => {
+      event.preventDefault();
+      fetch("/api/login", { method: "POST", body: new URLSearchParams(new FormData(form)) })
+        .then((response) => response.json())
+        .then((res) => {
+          if (res.code === 0) {
+            window.location.href = "/user"
+          } else {
+            alert(res.msg)
+          }
+        });
+    };
+  </script>
+</body>
+
+</html>
