@@ -10,7 +10,7 @@ const { defineConfig, devices } = require('@playwright/test');
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-console.log(process.env.CI)
+console.log(`|CI=${process.env.CI}|`)
 module.exports = defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -80,8 +80,8 @@ module.exports = defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-  webServer: {
-    command: 'npm serve web -p 80',
-  },
+  // webServer: {
+  //   command: 'npm serve web -p 80',
+  // },
 });
 

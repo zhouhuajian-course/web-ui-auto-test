@@ -1,0 +1,8 @@
+name: 输出环境变量CI
+on: push
+jobs:
+  echo-ci:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 输出CI
+      run: echo CI=$CI

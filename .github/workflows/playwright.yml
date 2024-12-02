@@ -16,6 +16,8 @@ jobs:
       run: npm ci
     - name: 安装 Playwright 浏览器
       run: npx playwright install --with-deps
+    - name: 运行 web
+      run: npx serve web -p 80
     - name: 运行 Playwright 测试用例
       run: npx playwright test
     - uses: actions/upload-artifact@v4
