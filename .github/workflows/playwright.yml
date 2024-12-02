@@ -1,0 +1,26 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [main, master]
+jobs:
+  test111:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: 输出环境变量 CI
+      run: echo CI=$CI    
+    - name: 安装项目依赖
+      run: npm ci
+    - name: 安装 Playwright 浏览器
+      run: npx playwright install --with-deps
+    - name: 运行 Playwright 测试用例
+      run: npx playwright test
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with: 
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
