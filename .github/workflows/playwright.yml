@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright Tests 单元测试
 on:
   push:
     branches: [main, master]
